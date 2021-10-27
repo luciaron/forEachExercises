@@ -10,7 +10,7 @@ function doubleValues(arr){
     let resultArr  = arr.map(function(el) {
         return el * 2;
     })
-    return resultArr
+    return resultArr;
 }
 
 /*
@@ -73,7 +73,13 @@ Examples:
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
 function vowelCount(str){
-   
+   let resultObj = {};
+   let tempArr = [];
+   for (let i = 0; i < str.length; i++) {
+       tempArr[i] = str.toLowerCase()[i];
+   }
+   console.log(tempArr);
+//    tempArr.forEach();
 }
 
 /*
@@ -84,7 +90,12 @@ Examples:
     doubleValuesWithMap([1,-2,-3]) // [2,-4,-6]
 */
 
-function doubleValuesWithMap(arr) {}
+function doubleValuesWithMap(arr) {
+    let resultArr  = arr.map(function(el) {
+        return el * 2;
+    });
+    return resultArr;
+}
 
 /*
 Write a function called valTimesIndex which accepts an array and returns a new array with each value multiplied by the index it is currently at in the array.
@@ -95,7 +106,10 @@ Examples:
 */
 
 function valTimesIndex(arr){
-    
+    let resultArr = arr.map(function(el, i) {
+        return el * i;
+    })
+    return resultArr;
 }
 
 /*
@@ -106,7 +120,11 @@ Examples:
 */
 
 function extractKey(arr, key){
-    
+    // let resultArr = arr.map(function(el, i) {
+    //     resultArr[i] = el[key];
+    // });
+    // console.log(resultArr);
+    // return resultArr;
 }
 
 /*
