@@ -224,10 +224,8 @@ function doubleOddNumbers(arr) {
     const odds = arr.filter(function(el) {
         return el % 2 === 1;
     });
-    console.log(odds);
     const resultArr = odds.map(function(el) {
         return el * 2;
     })
-    console.log(resultArr);
     return resultArr;
 }
