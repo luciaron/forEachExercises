@@ -7,7 +7,10 @@ Examples:
 
 */
 function doubleValues(arr){
-    
+    let resultArr  = arr.map(function(el) {
+        return el * 2;
+    })
+    return resultArr
 }
 
 /*
@@ -19,7 +22,10 @@ Examples:
 
 */
 function onlyEvenValues(arr){
-    
+    let resultArr = arr.filter(function(el) {
+        return el % 2 === 0;
+    })
+    return resultArr;
 }
 
 /*
@@ -31,7 +37,12 @@ Examples:
 
 */
 function showFirstAndLast(arr){
-    
+    let resultArr = arr.map(function(el, i) {
+        let first = arr[i][0];
+        let last = arr[i][arr[i].length - 1];
+        return `${first}${last}`
+    })
+    return resultArr;
 }
 
 /*
@@ -44,7 +55,11 @@ Examples:
 
 */
 function addKeyAndValue(arr,key,value){
-    
+    let resultArr = arr.map(function(el, i) {
+        arr[i][key] = value;
+        return arr[i];
+    })
+    return resultArr;
 }
 
 /*
