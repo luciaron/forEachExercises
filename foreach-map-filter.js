@@ -73,8 +73,8 @@ Examples:
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
 function vowelCount(str){
-    let vowels = 'aeiou';
-    let resultObj = {};
+    const vowels = 'aeiou';
+    const resultObj = {};
     let tempArr = str.toLowerCase().split('');
     tempArr.forEach(function(letter) {
         if (vowels.indexOf(letter) !== -1) {            //uses only vowels
@@ -186,7 +186,12 @@ Examples:
     findInObj([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele", isCatOwner: true}], 'isCatOwner',true) // {first: 'Tim', last:"Garcia", isCatOwner: true}
 */
 
-function findInObj(arr, key, searchValue) {}
+function findInObj(arr, key, searchValue) {
+    const resultArr = arr.filter(function(el, i) {
+        return el[key] === searchValue;
+    });
+    return resultArr[0];
+}
 
 /*
 Write a function called removeVowels which accepts a string and returns a new string with all of the vowels (both uppercased and lowercased) removed. Every character in the new string should be lowercased.
@@ -197,7 +202,15 @@ Examples:
     removeVowels('ZZZZZZ') // ('zzzzzz')
 */
 
-function removeVowels(str) {}
+function removeVowels(str) {
+    const vowels = 'aeiou';
+    const stringArr = str.toLowerCase().split('');
+    const noVowelsArr = stringArr.filter(function(el) {
+        return vowels.indexOf(el) === -1;
+    });
+    const resultStr = noVowelsArr.join('');
+    return resultStr;
+}
 
 /*
 Write a function called doubleOddNumbers which accepts an array and returns a new array with all of the odd numbers doubled (HINT - you can use map and filter to double and then filter the odd numbers).
@@ -207,4 +220,14 @@ Examples:
     doubleOddNumbers([4,4,4,4,4]) // []
 */
 
-function doubleOddNumbers(arr) {}
+function doubleOddNumbers(arr) {
+    const odds = arr.filter(function(el) {
+        return el % 2 === 1;
+    });
+    console.log(odds);
+    const resultArr = odds.map(function(el) {
+        return el * 2;
+    })
+    console.log(resultArr);
+    return resultArr;
+}
