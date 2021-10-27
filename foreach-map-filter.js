@@ -7,7 +7,7 @@ Examples:
 
 */
 function doubleValues(arr){
-    let resultArr  = arr.map(function(el) {
+    const resultArr  = arr.map(function(el) {
         return el * 2;
     })
     return resultArr;
@@ -22,7 +22,7 @@ Examples:
 
 */
 function onlyEvenValues(arr){
-    let resultArr = arr.filter(function(el) {
+    const resultArr = arr.filter(function(el) {
         return el % 2 === 0;
     })
     return resultArr;
@@ -37,7 +37,7 @@ Examples:
 
 */
 function showFirstAndLast(arr){
-    let resultArr = arr.map(function(el, i) {
+    const resultArr = arr.map(function(el, i) {
         let first = arr[i][0];
         let last = arr[i][arr[i].length - 1];
         return `${first}${last}`
@@ -55,7 +55,7 @@ Examples:
 
 */
 function addKeyAndValue(arr,key,value){
-    let resultArr = arr.map(function(el, i) {
+    const resultArr = arr.map(function(el, i) {
         arr[i][key] = value;
         return arr[i];
     })
@@ -73,13 +73,19 @@ Examples:
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
 function vowelCount(str){
-   let resultObj = {};
-   let tempArr = [];
-   for (let i = 0; i < str.length; i++) {
-       tempArr[i] = str.toLowerCase()[i];
-   }
-   console.log(tempArr);
-//    tempArr.forEach();
+    let vowels = 'aeiou';
+    let resultObj = {};
+    let tempArr = str.toLowerCase().split('');
+    tempArr.forEach(function(letter) {
+        if (vowels.indexOf(letter) !== -1) {            //uses only vowels
+            if (resultObj[letter]) {
+                resultObj[letter]++;
+            } else {
+                resultObj[letter] = 1;
+            }
+        }
+    })
+    return resultObj;
 }
 
 /*
@@ -91,7 +97,7 @@ Examples:
 */
 
 function doubleValuesWithMap(arr) {
-    let resultArr  = arr.map(function(el) {
+    const resultArr  = arr.map(function(el) {
         return el * 2;
     });
     return resultArr;
@@ -106,7 +112,7 @@ Examples:
 */
 
 function valTimesIndex(arr){
-    let resultArr = arr.map(function(el, i) {
+    const resultArr = arr.map(function(el, i) {
         return el * i;
     })
     return resultArr;
@@ -120,11 +126,10 @@ Examples:
 */
 
 function extractKey(arr, key){
-    // let resultArr = arr.map(function(el, i) {
-    //     resultArr[i] = el[key];
-    // });
-    // console.log(resultArr);
-    // return resultArr;
+    const resultArr = arr.map(function(obj, i) {
+        return obj[key];
+    });
+    return resultArr;
 }
 
 /*
@@ -135,7 +140,10 @@ Examples:
 */
 
 function extractFullName(arr){
-    
+    const resultArr = arr.map(function(obj, i) {
+        return `${obj['first']} ${obj['last']}`;
+    });
+    return resultArr;
 }
 
 /*
@@ -145,7 +153,14 @@ Examples:
     filterByValue([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele", isCatOwner: true}], 'isCatOwner') // [{first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Colt', last:"Steele", isCatOwner: true}]
 */
 
-function filterByValue(arr, key) {}
+function filterByValue(arr, key) {
+    let resultArr = arr.filter(function(obj, i) {
+        if (obj[key]){
+            return obj;
+        }
+    });
+    return resultArr;
+}
 
 /*
 Write a function called find which accepts an array and a value and returns the first element in the array that has the same value as the second parameter or undefined if the value is not found in the array.
@@ -155,7 +170,14 @@ Examples:
     find([1,2,3,4,5], 10) // undefined
 */
 
-function find(arr, searchValue) {}
+function find(arr, searchValue) {
+    let index = arr.indexOf(searchValue);
+    let result = arr[index];
+    if (result === -1) {
+        return undefined;
+    }
+    return result;
+}
 
 /*
 Write a function called findInObj which accepts an array of objects, a key, and some value to search for and returns the first found value in the array.
